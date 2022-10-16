@@ -7,7 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "V1", "V1", "{D3B453C7-77C1-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "V4", "V4", "{42F3542B-1B5D-4730-A7C6-C82877C23620}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V1HttpFunctionApp", "V1\V1HttpFunctionApp\V1HttpFunctionApp.csproj", "{47143A54-CB29-48AE-BB9F-8EF5F9FAEFDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "V1HttpFunctionApp", "V1\V1HttpFunctionApp\V1HttpFunctionApp.csproj", "{47143A54-CB29-48AE-BB9F-8EF5F9FAEFDD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "V4HttpFunctionApp", "V4\V4HttpFunctionApp\V4HttpFunctionApp.csproj", "{37F9B0A1-5E64-4B72-ABA6-288B9F53DAD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +21,17 @@ Global
 		{47143A54-CB29-48AE-BB9F-8EF5F9FAEFDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47143A54-CB29-48AE-BB9F-8EF5F9FAEFDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47143A54-CB29-48AE-BB9F-8EF5F9FAEFDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F9B0A1-5E64-4B72-ABA6-288B9F53DAD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F9B0A1-5E64-4B72-ABA6-288B9F53DAD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F9B0A1-5E64-4B72-ABA6-288B9F53DAD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F9B0A1-5E64-4B72-ABA6-288B9F53DAD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{47143A54-CB29-48AE-BB9F-8EF5F9FAEFDD} = {D3B453C7-77C1-4AA6-BD36-B3B1C46269D3}
+		{37F9B0A1-5E64-4B72-ABA6-288B9F53DAD6} = {42F3542B-1B5D-4730-A7C6-C82877C23620}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9ECED87-A91D-45AE-8909-9E02A2B6A57E}

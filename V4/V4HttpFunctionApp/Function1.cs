@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace V1HttpFunctionApp
+namespace V4HttpFunctionApp
 {
     public class Function1
     {
@@ -15,22 +15,22 @@ namespace V1HttpFunctionApp
         }
 
         [Function("Function1")]
-        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req)
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             HttpStatusCode statusCode;
             string body;
-            dynamic payload = await req.ReadFromJsonAsync<object>();
-            if (payload != null)
+            Person payload = await req.ReadFromJsonAsync<Person>();
+            if (payload is null)
             {
-                statusCode = HttpStatusCode.OK;
-                body = $"Hello {payload.name}";
+                statusCode = HttpStatusCode.BadRequest;
+                body = "Please pass a payload with Name in the request body";
             }
             else
             {
-                statusCode = HttpStatusCode.BadRequest;
-                body = "Please pass a name in the request body";
+                statusCode = HttpStatusCode.OK;
+                body = $"Hello {payload.Name}";
             }
 
             var response = req.CreateResponse(statusCode);
@@ -39,5 +39,9 @@ namespace V1HttpFunctionApp
 
             return response;
         }
+    }
+    public class Person
+    {
+        public string Name { get; set; }
     }
 }

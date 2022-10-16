@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,25 +10,21 @@ namespace V1HttpFunctionApp
     public static class Function1
     {
         [FunctionName("Function1")]
-        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, TraceWriter log)
+        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequestMessage req, TraceWriter log)
         {
             log.Info("C# HTTP trigger function processed a request.");
 
-            // parse query parameter
-            string name = req.GetQueryNameValuePairs()
-                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
-                .Value;
+            dynamic data = await req.Content.ReadAsAsync<object>();
+            string name = data?.name;
 
             if (name == null)
             {
-                // Get request body
-                dynamic data = await req.Content.ReadAsAsync<object>();
-                name = data?.name;
+                return req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name in the request body");
             }
-
-            return name == null
-                ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
-                : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+            else
+            {
+                return req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+            }
         }
     }
 }
